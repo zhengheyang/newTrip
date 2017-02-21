@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>My First JavaScript</title>
 		<script>
+			/*
 			function addSongs(){
 				var song1 = document.getElementById("song1")
 				var song2 = document.getElementById("song2")
@@ -15,6 +16,21 @@
 			}
 
         window.onload = addSongs;
+		*/
+			function makePhrases(){
+				var words1 = ["Please","I","You","If","Don't"];
+				var words2 = ["Let","Love","Forget","Break","Kill"];
+				var words3 = ["It","Her","Him","Them","Us"];
+
+				var rand1 = Math.floor(Math.random()*words1.length);
+				var rand2 = Math.floor(Math.random()*words2.length);
+				var rand3 = Math.floor(Math.random()*words3.length);
+
+				var phrase = words1[rand1]+" "+words2[rand2]+" "+words3[rand3];
+				var phraseElement = document.getElementById("said");
+				phraseElement.innerHTML = phrase;
+			}
+			window.onload = makePhrases;
 		</script>
 	</head>
 	<body>
@@ -98,14 +114,17 @@
 </script>	
 
 
-
+<!--
 	 <h1>My awesome playlist</h1>
 	  <ul id="playlist">
 	  	<li id="song1"></li>
 	  	<li id="song2"></li>
 	  	<li id="song3"></li>
 	  </ul>
-	
+-->	
+
+    <h1>The lyrics says:</h1>
+	  <p id="said"></p>
 	  
 	  
 		
