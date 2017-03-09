@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p title="englishword">abcd</p>
+<p>this is a test</p>
+<ul id="phrase">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li class="sale"></li>
+    <li class="sale important"></li>
+</ul>
+<script>
+    console.log(typeof document.getElementById("phrase"));
+    var shopping=document.getElementById("phrase");
+    var items=shopping.getElementsByTagName("*");
+    console.log(items.length);
+    for (var i=0;i<items.length;i++){
+        console.log(typeof items[i]);
+    }
+    console.log(document.getElementsByClassName("sale").length);
+    console.log(document.getElementsByClassName("sale important").length);
+    var sales=shopping.getElementsByClassName("sale");
+    console.log(sales.length);
+
+//    function getElementByClassName(node,classname) {
+//        if(node.getElementsByClassName){
+//            return node.getElementsByClassName(classname);
+//        } else {
+//            var results = new Array();
+//            var elems = node.getElementsByTagName("*");
+//            for(var i=0;i<elems.length;i++){
+//                if(elems[i].classname.indexOf(classname) !=-1){
+//                    results[results.length] = elems[i];
+//                }
+//            }
+//            return results;
+//        }
+//    }
+
+    //从文档中获取全部带有titl属性的<p>元素，然后把它的title属性值修改为zimu
+    var paras=document.getElementsByTagName("p");
+    for(var i=0;i<paras.length;i++){
+        var title_text=paras[i].getAttribute("title");
+        if(title_text){
+            paras[i].setAttribute("title","zimu");
+            console.log(paras[i].getAttribute("title"));
+        }
+    }
+
+
+</script>
+</body>
+</html>
