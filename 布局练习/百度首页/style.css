@@ -1,0 +1,333 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin:0px;
+}
+
+.clear {
+    clear: both;
+}
+
+html,body {
+    width:100%;
+    height:100%;
+}
+
+.container {
+    min-width: 810px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/*header*/
+.header {
+    width:100%;
+    height:60px;
+    position: relative;
+}
+
+.header a {
+    color: #555555;
+    font-size: 13px;
+}
+
+.header a:hover {
+    color: #3e00dd;
+}
+
+.header ul {
+    height:60px;
+    float: right;
+    margin-right: 96px;
+}
+
+.header ul li {
+    float: left;
+    margin-left:20px;
+    list-style-type: none;
+    line-height: 60px;
+}
+
+.more {
+    width:60px;
+    height:24px;
+    background-color: #3388ff;
+    color: #ffffff;
+    font-size: 14px;
+    position: absolute;
+    top:19px;
+    right:12px;
+}
+/*header*/
+
+/*登录后header-r*/
+.header-r {
+    width:100%;
+    height:33px;
+    border-bottom: 1px solid #e9e9e9;
+    position: relative;
+}
+
+.widget ul li {
+    float: left;
+    line-height: 32px;
+    list-style-type: none;
+    margin-right: 10px;
+}
+
+.widget ul li:first-child {
+    margin-left: 17px;
+}
+
+.widget {
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+.widget a {
+    color: #555555;
+    font-size: 13px;
+}
+
+.more-r {
+    width:60px;
+    height:24px;
+    margin-bottom:3px;
+    background-color: #3388ff;
+    color: #ffffff;
+    font-size: 14px;
+    float: right;
+}
+
+.header-r a {
+    color: #555555;
+    font-size: 13px;
+}
+
+.header-r a:hover {
+    color: #3e00dd;
+}
+
+.header-r ul {
+    height:32px;
+    float: right;
+}
+
+.header-r ul li {
+    float: left;
+    margin-left:20px;
+    list-style-type: none;
+    line-height: 32px;
+}
+/*/登录后header-r*/
+
+.logo {
+    height:222px;
+    background-image: url("images/baidulogo.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+/*searchbar*/
+.search {
+    width:645px;
+    height:74px;
+    padding-top: 38px;
+    margin:auto;
+    position: relative;
+}
+
+.textarea {
+    display: inline-block;
+    width:540px;
+    height:36px;
+    border:1px solid #b6b6b6;
+    border-right: none;
+    margin-right: 0px;
+}
+
+.textarea input {
+    width:500px;
+    height:34px;
+    border: none;
+    padding-left: 5px;
+}
+
+.textarea input:focus {
+    outline:none;
+}
+
+.textarea:hover {
+    border-color: #999;
+}
+
+
+.btn {
+    display: inline-block;
+    width:100px;
+    height:36px;
+}
+
+.btn:hover input {
+    background-color: #2868c8;
+}
+
+.btn input {
+    width:100px;
+    height:36px;
+    font-size: 13px;
+    line-height: 36px;
+    color: #ffffff;
+    background-color: #317ef3;
+    border: none;
+}
+
+.camera {
+    position: absolute;
+    left:511px;
+    bottom:6px;
+}
+
+
+.blank {
+    height:378px;
+}
+
+
+/*news*/
+
+.news-box {
+    width:895px;
+    height:1000px;
+    margin:79px auto;
+    border:1px solid #e9e9e9;
+}
+
+.news-menu {
+    width:893px;
+    height:39px;
+    border-bottom:1px solid #e9e9e9;
+    font-size: 14px;
+    line-height: 39px;
+    color: #333;
+    position: relative;
+}
+
+
+.news-menu ul {
+    height:39px;
+    float: left;
+    position: absolute;
+    top:0px;
+}
+.news-menu ul li {
+    float: left;
+    list-style-type: none;
+    height:39px;
+    width:80px;
+    text-align: center;
+}
+
+.news-menu ul li:first-child {
+    width:124px;
+}
+
+.news-menu ul li span {
+    display: inline-block;
+    width:14px;
+    height:14px;
+    margin-right: 7px;
+    background-image: url("images/person-gray.png");
+}
+
+.news-menu ul li:hover span {
+    background-image: url("images/person.png");
+}
+
+.news-menu ul li:hover {
+    background-color: #b3b6bb;
+    color: #ffffff;
+}
+
+.setting {
+    display: inline-block;
+    width:40px;
+    height:39px;
+    background-image: url("images/setting.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    float: right;
+}
+
+.setting:hover {
+    background-image: url("images/setting-blue.png");
+}
+
+
+/*访问过后变色块#9a9ada2*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*news*/
+.code {
+    width:65px;
+    margin:auto;
+}
+
+.codepic {
+    width:60px;
+    margin:auto;
+}
+
+.code span {
+    display: block;
+    color: #999;
+    font-size: 15px;
+    width:60px;
+    line-height: 23px;
+    margin:auto;
+}
+
+/*footer*/
+
+.footer {
+    width:100%;
+    height:117px;
+    padding-top:22px;
+    padding-bottom: 58px;
+    color: #999;
+    font-size: 15px;
+}
+
+.footer a {
+    color: #999;
+    font-size: 15px;
+}
+
+.about {
+    width:400px;
+    margin:auto;
+}
+
+.about span+span {
+    margin-left: 25px;
+}
+.copyright {
+    width:650px;
+    margin:auto;
+}
+
+.copyright span+span {
+    margin-left: 20px;
+}
