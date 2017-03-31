@@ -1,0 +1,441 @@
+* {
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+}
+
+html,body {
+    width: 100%;
+    height:100%;
+}
+
+.clear {
+    clear: both;
+}
+
+.container {
+    background-color: #f0f0f2;
+    width: 100%;
+}
+
+/*header*/
+.header {
+    width:1400px;
+    height:60px;
+    background-color: #666666;
+    margin:auto;
+}
+
+.header ul li {
+    float: left;
+    list-style-type: none;
+    line-height: 60px;
+    color: white;
+    font-size: 16px;
+    margin-right: 80px;
+}
+
+.header ul li+li {
+    background-image:url("home-w.png");
+    background-repeat: no-repeat;
+    background-size: 23px;
+    background-position: left center;
+    padding-left: 35px;
+}
+
+.header ul :first-child {
+    font-size: 39px;
+    line-height: 60px;
+    margin-left: 174px;
+    margin-right: 116px;
+}
+
+.wechat {
+    width:125px;
+    height:60px;
+    float: right;
+    font-size: 14px;
+    color: white;
+    margin-right: 170px;
+    background-image: url("wechat.png");
+    background-repeat: no-repeat;
+    background-size: 28px;
+    background-position: left center;
+}
+
+.wechat span {
+    display: block;
+    line-height: 15px;
+    float: right;
+    padding-left: 35px;
+}
+
+
+.bg {
+    width:1400px;
+    height:245px;
+    background-color: #aaaaaa;
+    margin:auto;
+}
+
+.opendown {
+    float: left;
+    position: relative;
+    left:667px;
+    top:334px;
+    width:46px;
+    height:21px;
+    font-size: 14px;
+    background-image: url("opendown.png");
+    background-repeat: no-repeat;
+    background-size: 10px;
+    background-position: right center;
+}
+.gamelogo {
+    width:145px;
+    height:145px;
+    border-radius: 5px;
+    background-color: #888888;
+    position: relative;
+    top:188px;
+    left:204px;
+}
+
+.open {
+    width:46px;
+    height:14px;
+    font-size: 14px;
+    position: relative;
+    /*bottom:17px;*/
+}
+
+.info {
+    width:1400px;
+    height:120px;
+    background-color: #c3c3c3;
+    border:1px solid #afafaf;
+    margin:auto;
+
+}
+
+
+
+.codedown {
+    font-size: 14px;
+    color: #555555;
+    line-height: 120px;
+    margin-left:6px;
+}
+
+.name,.download,.code {
+    float: left;
+    height:100px;
+    width:100px;
+    margin-top:11px;
+}
+.name {
+    margin-left: 360px;
+    width:362px;
+}
+
+.name span {
+    display: block;
+    color: white;
+    font-size: 13px;
+}
+
+.name :first-child {
+    font-size: 32px;
+}
+
+.download {
+    width:168px;
+    margin-left: 158px;
+    line-height: 43px;
+    font-size: 14px;
+}
+
+.download div {
+    width:168px;
+    height:43px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.download :last-child {
+    margin-top: 12px;
+}
+
+.download span {
+    line-height: 43px;
+    font-size: 14px;
+    padding-left: 40px;
+    background-image: url("android.png");
+    background-repeat: no-repeat;
+
+}
+.code {
+    background-color: #888888;
+    margin-left: 23px;
+    border-radius: 5px;
+}
+/*mainbox*/
+.box {
+    width:1060px;
+    background-color: #ffffff;
+    border:1px solid #bbbbbb;
+    margin:auto;
+}
+
+.box-top {
+    height:355px;
+    width:100%;
+    padding:65px 25px 0px 30px;
+}
+
+.box-top-l {
+    float: left;
+    width:476px;
+    height:290px;
+    background-color: #888888;
+}
+
+.box-top-r {
+    float: right;
+    width: 465px;
+    height:290px;
+}
+
+.news {
+    float: left;
+    width:350px;
+    height:290px;
+}
+
+.news-title {
+    width:350px;
+    height:45px;
+}
+
+.news-title div {
+    float: left;
+    width:60px;
+    height:45px;
+    padding: 13px;
+}
+
+.news-title span {
+    float: right;
+    font-size: 13px;
+    width:48px;
+    padding:0px;
+    position: relative;
+    top:18px;
+}
+
+
+.news-title div a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+
+.news-title div:hover {
+    border-bottom: 4px solid #03a9f4;
+}
+
+.news-title div:hover a {
+    color: #03a9f4;
+}
+
+.news-title span:hover {
+    color: #03a9f4;
+}
+
+
+.border-new {
+    width:350px;
+    height:80px;
+    border-top:1px solid #bbbbbb;
+    border-bottom:1px solid #bbbbbb;
+
+}
+
+.news-news {
+    height:80px;
+    padding-top:18px;
+    padding-bottom:17px;
+    background-image: url("arrow.png");
+    background-repeat: no-repeat;
+    background-size: 13px;
+    background-position: right center;
+}
+
+.news-news span {
+    display: block;
+    font-size: 18px;
+    padding-left: 13px;
+    line-height: 18px;
+    margin-bottom:14px;
+}
+
+.news-news span+span {
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.menu {
+    float: right;
+    width:65px;
+}
+
+.menu-icon {
+    width:65px;
+    height:65px;
+    border:1px solid #888888;
+    border-radius:5px;
+    margin-bottom:10px;
+
+}
+
+.icon {
+    height:35px;
+    background-image: url("home.png");
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: center bottom;
+}
+
+.text {
+    font-size: 14px;
+    text-align: center;
+}
+
+.box-middle {
+    width:1060px;
+    height:169px;
+    padding:40px 30px 0 30px;
+}
+
+.middle-pic {
+    width:304px;
+    height:129px;
+    background-color: #888888;
+    float: left;
+}
+.middle-pic+.middle-pic {
+    margin-left: 44px;
+}
+
+.aboutgame {
+    width:1060px;
+    height:137px;
+    padding:58px 0 60px 30px;
+}
+
+.aboutgame span {
+    font-size: 18px;
+}
+
+.intro {
+    width:232px;
+    height:43px;
+    margin:0px 15px 21px 15px;
+    float: left;
+}
+
+.intro:hover {
+    border-bottom: 4px solid #444444;
+}
+
+.intro span {
+    font-size: 16px;
+    margin-left: 70px;
+}
+
+.picsup {
+    width:210px;
+    height:130px;
+    background-color: #888888;
+    float: left;
+    margin-top:21px;
+    margin-left:40px;
+}
+.picsup+.picsup {
+    margin-left:47px;
+}
+.picsdown {
+    width:210px;
+    height:130px;
+    background-color: #888888;
+    float: left;
+    margin-top:20px;
+    margin-left:40px;
+}
+.picsdown+.picsdown {
+    margin-left:47px;
+}
+
+.contact {
+    width:1060;
+    height:220px;
+}
+.contact-style {
+    width:185px;
+    height:47px;
+    float: left;
+    margin-top: 96px;
+    margin-bottom: 75px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-position: left center;
+}
+
+.weibo {
+    background-image: url("weibo.png");
+    margin-left: 40px;
+}
+.weixin {
+    background-image: url("weixin.png");
+    margin-left: 230px;
+}
+.phone {
+    background-image: url("phone.png");
+    margin-left: 150px;
+}
+
+.contact span {
+    display: block;
+    font-size: 16px;
+    line-height: 23px;
+    padding-left: 50px;
+}
+
+/*footer*/
+.footer {
+    width:1400px;
+    height:192px;
+    background-color: #666666;
+    margin:auto;
+    padding-top: 30px;
+}
+
+.footer>div {
+    font-size: 16px;
+    line-height: 16px;
+    height:16px;
+    color: #ffffff;
+    text-align: center;
+
+}
+
+.footer div+div {
+    margin-top: 44px;
+}
+
+
+.footer div span {
+    margin:44px 29px 25px 29px;
+}
+
