@@ -200,7 +200,7 @@ html,body {
 
 .news-box {
     width:895px;
-    height:1000px;
+    height:100%;
     margin:79px auto;
     border:1px solid #e9e9e9;
 }
@@ -269,14 +269,160 @@ html,body {
 /*访问过后变色块#9a9ada2*/
 
 
+.l-news {
+    float: left;
+    width:538px;
+    height:100%;
+    margin-left:25px;
+}
 
+.r-news {
+    float: right;
+    width:304px;
+    height:314px;
+}
 
+.r-news-menu {
+    height:41px;
 
+}
 
+.r-news-menu span {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 19px;
+}
 
+.r-news-menu span a {
+    color: #333333;
+    text-decoration: none;
+}
 
+.r-news-menu span+span {
+    margin-left: 135px;
+    padding-left: 15px;
+    background-image: url("images/f5.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
 
+.r-news-menu span+span:hover {
+    background-image: url("images/f5-blue.png");
+    color: #317ef3;
+}
 
+.r-news-menu span+span:hover a {
+    color: #317ef3;
+}
+
+.news-a {
+    float: left;
+    width:150px;
+    height:270px;
+}
+
+.news-a span {
+    display: block;
+    margin-top:12px;
+}
+
+.news-a span a {
+    color: #555555;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.news-a span a:hover {
+    color: #317ef3;
+    text-decoration: underline;
+    text-underline-color: #317ef3;;
+}
+
+.hr {
+    display: inline-block;
+    width:172px;
+    height:41px;
+    border-bottom: 1px solid #9f9f9f;
+}
+
+.baiduhand {
+    display: inline-block;
+    width:177px;
+    height:41px;
+    margin-left:4px;
+    margin-right: 5px;
+    background-image: url("images/baiduhand.png");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+.hobby {
+    width:177px;
+    height:14px;
+    font-size: 14px;
+    color: #9f9f9f;
+    line-height: 14px;
+    margin:auto;
+}
+
+.main-news-a {
+    height:205px;
+    border-bottom: 1px solid #9f9f9f;
+}
+
+.news-titile {
+    height:35px;
+    font-size: 18px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.news-pic img {
+    width:179px;
+    height:119px;
+}
+
+.news-time {
+    font-size:14px;
+    color: #9f9f9f;
+}
+
+.main-news-b {
+    height:88px;
+    padding-top:18px;
+    border-bottom: 1px solid #9f9f9f;
+}
+
+.main-news-c {
+    height:156px;
+    border-bottom: 1px solid #9f9f9f;
+    position: relative;
+}
+.single {
+    margin:20px 22px 19px 0px;
+}
+
+.c-type {
+    position: absolute;
+    left:202px;
+    top:25px;
+}
+
+.l-news a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.l-news a:hover {
+    color: #317ef3;
+    text-decoration: underline;
+    text-underline-color: #317ef3;
+}
 
 
 /*news*/
