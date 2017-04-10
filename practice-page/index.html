@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="photo">
+            <img src="images/p1.png" alt="">
+        </div>
+        <div class="hello">Hello..</div>
+        <div class="name">My name is Web & i do Creative Bots</div>
+        <div class="drop-btn"></div>
+    </div>
+    <div class="content">
+        <div class="info">
+            <div class="info-study">
+                <div class="info-title">Study..</div>
+                <div>Lorem ipsum dolor sid amet consectetur<span>(2010)</span></div>
+                <div>Nam libero tempore,cum soluta nobis<span>(2011)</span></div>
+                <div>Lorem Ipsum,you need to be sure there<span>(2009)</span></div>
+                <div>Nam libero tempore,cum soluta nobis<span>(2011)</span></div>
+                <div>Lorem ipsum dolor sit amet consectetur<span>(2014)</span></div>
+                <div>libero tempore,cum soluta nobis Nam<span>(2011)</span></div>
+            </div>
+            <div class="info-skills">
+                <div class="info-title">Skills..</div>
+                <div>Html</div>
+                <div class="bar">
+                    <div class="bar-html"></div>
+                </div>
+                <div>Css</div>
+                <div class="bar">
+                    <div class="bar-css"></div>
+                </div>
+                <div>Js</div>
+                <div class="bar">
+                    <div class="bar-js"></div>
+                </div>
+                <div>Php</div>
+                <div class="bar">
+                    <div class="bar-php"></div>
+                </div>
+            </div>
+            <!--<div class="to-top up-top">-->
+            <!--<img src="images/to-top2.png" alt="">-->
+            <!--</div>-->
+            <!--<div class="to-top">-->
+            <!--<img src="images/to-top2.png" alt="">-->
+            <!--</div>-->
+
+            <div class="clear"></div>
+        </div>
+        <div class="best">
+            <div class="best-desigh">
+                <div class="best-pic">
+                    <img src="images/design.png" alt="">
+                </div>
+                <div class="best-title">
+                    THE BEST DESIGN
+                </div>
+                <div class="best-content">
+                    <div>Lorem ipsum dolor sit amet,consectetur adipiscing elit,sed do eiusmod Lorem Ipsum passages containing
+                        of Letraset sheets</div>
+                </div>
+            </div>
+            <div class="best-support">
+                <div class="best-pic">
+                    <img src="images/support.png" alt="">
+                </div>
+                <div class="best-title">
+                    THE BEST SUPPORT
+                </div>
+                <div class="best-content">
+                    <div>Lorem ipsum dolor sit amet,consectetur adipiscing elit,sed do eiusmod Lorem Ipsum passages containing
+                        of Letraset sheets</div>
+                </div>
+            </div>
+            <div class="best-solutions">
+                <div class="best-pic">
+                    <img src="images/solution.png" alt="">
+                </div>
+                <div class="best-title">
+                    THE BEST SOLUTIONS
+                </div>
+                <div class="best-content">
+                    <div>Lorem ipsum dolor sit amet,consectetur adipiscing elit,sed do eiusmod Lorem Ipsum passages containing
+                        of Letraset sheets</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="sns">
+            <div class="sns-title">
+                Social Network
+            </div>
+            <div class="sns-fb">
+                <img src="images/facebook.png" alt="" align="center"> 733K
+                <div class="sns-content">
+                    Facebook Likes
+                </div>
+            </div>
+            <div class="sns-tt">
+                <img src="images/twitter.png" alt="" align="center"> 620K
+                <div class="sns-content">
+                    Twitter Followers
+                </div>
+            </div>
+            <div class="sns-g">
+                <img src="images/google.png" alt="" align="center"> 412K
+                <div class="sns-content">
+                    Google+ Followers
+                </div>
+            </div>
+            <div class="sns-be">
+                <img src="images/behance.png" alt="" align="center"> 322K
+                <div class="sns-content">
+                    Behance Followers
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="contact">
+            <div class="contact-title">
+                Contact Us
+            </div>
+            <div class="contact-form">
+                <form action="">
+                    <div class="form-info">
+                        <div>
+                            <input type="text">
+                        </div>
+                        <div>
+                            <input type="text">
+                        </div>
+                        <div>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="form-msg">
+                        <textarea name="" id="" cols="" rows=""></textarea>
+                        <input type="submit" value="Send Message">
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </form>
+            </div>
+        </div>
+        <div id="map"></div>
+    </div>
+    <div class="footer">
+        Copyright &copy; 2015.Company name ALl rights reserved.
+    </div>
+
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=OyoxTAQHrR8NgvoPzCDuIbuaC5zw1cQl"></script>
+    <script type="text/javascript">
+        //创建和初始化地图函数：
+        function initMap() {
+            createMap();//创建地图
+            setMapEvent();//设置地图事件
+            addMapControl();//向地图添加控件
+            addMapOverlay();//向地图添加覆盖物
+        }
+        function createMap() {
+            map = new BMap.Map("map");
+            map.centerAndZoom(new BMap.Point(108.934166, 34.342588), 14);
+        }
+        function setMapEvent() {
+            map.enableScrollWheelZoom();
+            map.enableKeyboard();
+            map.enableDragging();
+            map.enableDoubleClickZoom()
+        }
+        function addClickHandler(target, window) {
+            target.addEventListener("click", function () {
+                target.openInfoWindow(window);
+            });
+        }
+        function addMapOverlay() {
+        }
+        //向地图添加控件
+        function addMapControl() {
+            var scaleControl = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
+            scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+            map.addControl(scaleControl);
+            var navControl = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
+            map.addControl(navControl);
+            var overviewControl = new BMap.OverviewMapControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: true });
+            map.addControl(overviewControl);
+        }
+        var map;
+        initMap();
+    </script>
+</body>
+
+</html>

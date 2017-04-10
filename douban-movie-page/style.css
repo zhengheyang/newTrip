@@ -152,6 +152,27 @@ html,body,.container {
     background-color: #d1d1d1;
 }
 
+.sort {
+    height:97px;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.sort ul li {
+    float: left;
+    list-style-type: none;
+    color: #666666;
+    font-size: 14px;
+    line-height: 26px;
+    height:26px;
+    text-align: center;
+    padding:0 11px;
+
+}
+
+
+
+
 .sidebar{
     float: right;
     width:300px;
