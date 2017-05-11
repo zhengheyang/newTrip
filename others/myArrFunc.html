@@ -10,7 +10,7 @@
         var nameArr3 = ['beckham', 'zidane', 'ballack']
 
 
-        Object.prototype.zhConcat = function () {
+        Array.prototype.zhConcat = function () {
             var tempArr = [];
             for (var t = 0; t < this.length; t++) {
                 tempArr.push(this[t]);
@@ -28,13 +28,30 @@
         // console.log(nameArr.zhConcat(nameArr2,nameArr3));
         // console.log(nameArr);
 
-        Object.prototype.zhJoin = function () {
+        // Array.prototype.zhJoin = function () {
+        //     var str = '';
+        //     var flag = '';
+        //     if (arguments[0] == undefined) {
+        //         flag = ",";
+        //     } else {
+        //         flag = arguments[0];
+        //     }
+        //     for (var i = 0; i < this.length; i++) {
+
+        //         if (i == this.length - 1) {
+        //             str += this[i];
+        //         } else {
+        //             str += this[i] + flag;
+        //         }
+        //     }
+        //     return str;
+        // }
+
+
+        Array.prototype.zhJoin = function (flag) {
             var str = '';
-            var flag = '';
-            if (arguments[0] == undefined) {
+            if (!flag) {
                 flag = ",";
-            } else {
-                flag = arguments[0];
             }
             for (var i = 0; i < this.length; i++) {
 
@@ -46,10 +63,10 @@
             }
             return str;
         }
-        // console.log(nameArr.zhJoin());
+        console.log(nameArr.zhJoin());
 
 
-        Object.prototype.zhSlice = function (a, b) {
+        Array.prototype.zhSlice = function (a, b) {
             var tempArr = [];
             var tempArr2 = [];
             for (var t = 0; t < this.length; t++) {
@@ -85,46 +102,39 @@
 
 
 
-        Object.prototype.zhSplice = function (x, y) {
+        Array.prototype.zhSplice = function (x, y) {
             var tempArr = [];
             var tempArr2 = [];
-            var tempArr3 = [];
-            var tempArr4 = [];
             for (var t = 0; t < this.length; t++) {
                 tempArr.push(this[t]);
             }
-
-            if (x >= 0 || y >= 0) {
-                for (var i = x; i < x + y; i++) {
-                    tempArr2.push(tempArr[i]);
-                }
-                for (var k = 0; k < x; k++) {
-                    tempArr3.push(tempArr[k]);
-                }
-                for (var j = 2; j < arguments.length; j++) {
-                    tempArr3.push(arguments[j]);
-                }
-                for (var l = 0; l < tempArr.length - x - y + 1; l++) {
-                    tempArr4.push(tempArr.pop());
-                }
-                for (var m = 0; m < tempArr4.length - 1; m++) {
-                    tempArr3.push(tempArr4[m]);
-                }
+            for (var i = x; i < x + y; i++) {
+                tempArr2.push(tempArr[i])
+            };
+            for (var j = 0; j < tempArr.length; j++) {
+                this.pop();
             }
-
+            for (var k = 0; k < x; k++) {
+                this.push(tempArr[k]);
+            }
+            for (var m = 2; m < arguments.length; m++) {
+                this.push(arguments[m]);
+            }
+            for (var n = x + y; n < tempArr.length; n++) {
+                this.push(tempArr[n]);
+            }
 
             return tempArr2;
         }
-        console.log(nameArr);
-        console.log(nameArr.zhSplice(2, 2, 6, 7));
+        // console.log(nameArr);
+        // console.log(nameArr.zhSplice(2, 2, 6, 7));
         // console.log(nameArr.splice(2, 2, 6, 7));
+        // console.log(nameArr);
 
-        console.log(nameArr);
 
+        var numArray = [3, 5, 1, 8, 2, 4, 32, 18, 25, 11];
 
-        var numArray = [3, 5, 1, 8, 2, 4, 12, 18, 25, 33];
-
-        Object.prototype.zhReverse = function () {
+        Array.prototype.zhReverse = function () {
             var tempNum = [];
             var tempNum2 = [];
             for (var i = 0; i < this.length; i++) {
@@ -142,24 +152,39 @@
         // console.log(numArray.zhReverse());
         // console.log(numArray);
 
-        Object.prototype.zhSort = function () {
+        Array.prototype.zhSort = function (sortBy) {
             var tempNum;
-
-            for (i = 0; i < this.length; i++) {
-                for (j = i; j < this.length; j++) {
-                    if (this[i] > this[j]) {
-                        tempNum = this[i];
-                        this[i] = this[j];
-                        this[j] = tempNum;
+            if (!arguments[0]) {
+                for (var j = 0; j < this.length - 1; j++) {
+                    for (i = 0; i < this.length - 1 - j; i++) {
+                        if (this[i] > this[i + 1]) {
+                            tempNum = this[i];
+                            this[i] = this[i + 1];
+                            this[i + 1] = tempNum;
+                        }
+                    }
+                }
+            } else {
+                for (var j = 0; j < this.length - 1; j++) {
+                    for (i = 0; i < this.length - 1 - j; i++) {
+                        if (sortBy(this[i], this[i + 1]) > 0) {
+                            tempNum = this[i];
+                            this[i] = this[i + 1];
+                            this[i + 1] = tempNum;
+                        }
                     }
                 }
             }
-
             return this;
         }
-//        console.log(numArray);
-//        console.log(numArray.zhSort());
-//        console.log(numArray);
+
+        var sortBy = function (a, b) {
+            return b - a;
+        }
+
+        // console.log(numArray);
+        // console.log(numArray.zhSort(sortBy));
+        // console.log(numArray);
     </script>
 
 
