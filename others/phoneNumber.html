@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <span>请输入电话号码</span> <input id="phoneNum" type="number"><button onclick="encryption()">加密</button>
+    <br>
+    <span>加密后</span><input id="encryptionRs" type="text">
+    <script>
+        // 个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，加密规则如下：
+        // 每位数字 都加上5,然后用和除以10的余数代替该数字，再将第一位和第四位交换，第二位和第三位交换。
+        function getNum() {
+            var usrInput = document.getElementById("phoneNum").value;
+            if (usrInput.length == 4) {
+                return usrInput;
+            } else {
+                alert('请输入四位整数');
+            }
+        }
+
+        function encryption() {
+            var usrInput = getNum();
+            var strArr = [];
+            for (var i = 0; i < 4; i++) {
+                strArr.push(usrInput.substr(i, 1));
+            }
+            var strArr = strArr.map(function (value) {
+                return (Number(value) + 5) % 10;
+            })
+            console.log(strArr);
+            // var temp = strArr[0];
+            // strArr[0] = strArr[3];
+            // strArr[3] = temp;
+            // var temp2 = strArr[1];
+            // strArr[1] = strArr[2];
+            // strArr[2] = temp2;
+            // console.log(strArr);
+            var rs=strArr.reverse();
+            document.getElementById("encryptionRs").value = rs.join('');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <span>请输入CD-KEY:</span><input id="cdkey" type="number" placeholder="请输入16位数字"><button onclick="check()">验证</button>
+    <br>
+    <div id="rs"></div>
+
+    <script>
+        // 在计算机上安装或者注册某些软件时，要求输入序列号。序列号一般是一串有字母和数字组成的字符串，也有一些是单纯由数字组成的字符串。
+        // 当输入序列号时，需要验证序列号是否合法，如果合法则允许继续安装或者显示注册成功；如果不通过，则不能继续安装或者注册失败。
+        // 现在假设改软件的序列号是由16位数字组成的，验证规则如下：
+        // 1、从序列号最后一位数字开始，逆向将奇数位(1、3、5等等)相加。
+        // 2、从序列号最后一位数字开始，逆向将偶数位数字，先乘以2（如果乘积为两位数，则将其减去9），再求和。
+        // 3、将奇数位总和加上偶数位总和，结果可以被10整除。
+        // 输入由16位数字构成的字符串，表示序列号，输出“ok”或者“error”
+        // 例如 ：输入 5432123456788881 输出 ok
+
+
+        function check() {
+            var usrInput = document.getElementById("cdkey").value;
+            if(usrInput.length!=16){
+                alert('请输入16位数字');
+            }
+            var strArr = [];
+            var jishu = [];
+            var oushu = [];
+            for (var i = 0; i < usrInput.length; i++) {
+                strArr.push(usrInput.substr(i, 1));
+            }
+            var numArr = strArr.map(function (value) {
+                return Number(value);
+            })
+            var tempArr = numArr.reverse();
+            console.log(tempArr);
+            for (var i = 0; i < usrInput.length/2; i++) {
+                jishu.push(tempArr[0]);
+                tempArr.shift();
+                oushu.push(tempArr[0]);
+                tempArr.shift();
+            }
+            console.log(jishu);
+            console.log(oushu);
+            var sum1 = jishu.reduce(function (prevResult, item, index, array) {
+                return prevResult += item;
+            });
+            console.log(sum1);
+
+            var oushu2 = oushu.map(function (value) {
+                return value * 2;
+            })
+            console.log(oushu2);
+
+            for(var j=0;j<oushu2.length;j++){
+                if(oushu2[j]>9){
+                    oushu2[j]=oushu2[j]-9
+                }
+            }
+            console.log(oushu2);
+            var sum2 = oushu2.reduce(function (prevResult, item, index, array) {
+                return prevResult += item;
+            });
+            console.log(sum2);
+            var rs=sum1+sum2;
+            console.log(rs);
+            if(rs%10==0){
+                document.getElementById("rs").innerHTML='<h2>'+'恭喜您注册成功！！！'+'<h2';
+            }else {
+                 document.getElementById("rs").innerHTML='<h2>'+'Error!!!'+'<h2';
+            }
+
+
+
+
+
+
+
+        }
+    </script>
+</body>
+
+</html>

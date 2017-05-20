@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    .btn-box {
+        padding: 10px 0;
+    }
+    
+    .btn {
+        width: 150px;
+        height: 35px;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        background-color: #368dd9;
+    }
+</style>
+
+<body>
+
+    <h4>将列表内容放入文本框内，每行一条，点击去重按钮，即可得到无重复数据的列表：</h4>
+    <textarea name="" id="usrInput" cols="50" rows="25"></textarea>
+    <div class="btn-box">
+        <button class="btn" onclick="delDouble()">去重处理</button>
+    </div>
+
+    <script>
+        function delDouble() {
+            var strArr = document.getElementById("usrInput").value.split('\n');
+            var tempArr=[];
+            var tempStrArr = [];
+            for (var t = 0; t < strArr.length; t++) {
+                tempStrArr.push(strArr[t]);
+            }
+            tempArr.push(tempStrArr[0]);
+            tempStrArr.shift();
+            for (var i = 0; i < strArr.length - 1; i++) {
+                if (tempArr.some(function (value) {
+                    return value == tempStrArr[0];
+                })) {
+                    tempStrArr.shift();
+                } else {
+                    tempArr.push(tempStrArr[0]);
+                    tempStrArr.shift();
+                }
+            }
+            console.log(tempArr);
+            document.getElementById("usrInput").value = tempArr.join('\n');
+        }
+
+        // function sx() {
+        //     var rntArray = [], temp, hasValue;
+        //     var array = document.getElementById("usrInput").value.split("\n");
+        //     for (var i in array) {
+        //         temp = array[i];
+        //         hasValue = false;
+        //         for (var j in rntArray) {
+        //             if (temp === rntArray[j]) {
+        //                 hasValue = true;
+        //                 break;
+        //             }
+        //         }
+        //         if (hasValue === false) {
+        //             rntArray.push(temp);
+        //         }
+        //     }
+        //     document.getElementById("usrInput").value = rntArray.join("\n");
+        }
+    </script>
+</body>
+
+</html>

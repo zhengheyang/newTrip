@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+
+
+    <style>
+        .screen {
+            width: 360px;
+            height: 60px;
+            padding: 20px 0 20px 50px;
+            color: #fff;
+            background: -webkit-gradient(linear, 0 0, 0 bottom, from(#096dc2), to(rgba(105, 168, 225, 0.8)));
+        }
+        
+        #hours,
+        #minutes,
+        #seconds,
+        #right-side {
+            float: left;
+        }
+        
+        #hours,
+        #minutes {
+            font-size: 46px;
+            line-height: 60px;
+            font-weight: bold;
+        }
+        
+        #seconds {
+            font-size: 32px;
+            margin: 16px 50px 0 10px;
+        }
+        
+        #week {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="screen">
+        <div id="hours"></div>
+        <div id="minutes"></div>
+        <div id="seconds"></div>
+        <div class="right-side">
+            <div id="week"></div>
+            <div id="nowdate"></div>
+        </div>
+    </div>
+
+
+    <script>
+        var week = ['日', '一', '二', '三', '四', '五', '六']
+        setInterval(function () {
+            var date = new Date();
+
+            if (date.getHours() >= 10) {
+                document.getElementById("hours").innerHTML = date.getHours() + ":";
+            } else {
+                document.getElementById("hours").innerHTML = "0" + date.getHours() + ":";
+            }
+            if (date.getMinutes() >= 10) {
+                document.getElementById("minutes").innerHTML = date.getMinutes();
+            } else {
+                document.getElementById("minutes").innerHTML = "0" + date.getMinutes();
+            }
+            if (date.getSeconds() >= 10) {
+                document.getElementById("seconds").innerHTML = date.getSeconds();
+            } else {
+                document.getElementById("seconds").innerHTML = "0" + date.getSeconds();
+            }
+
+            document.getElementById("week").innerHTML = "星期" + week[date.getDay()];
+
+            var monthNum = date.getMonth() + 1;
+            document.getElementById("nowdate").innerHTML = date.getFullYear() + '年' + monthNum + '月' + date.getDate() + '日';
+        }, 100)
+    </script>
+
+</body>
+
+</html>

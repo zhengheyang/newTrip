@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <span>请输入:</span><input id="usrInput" type="text"><button onclick="palindrome(getArr())">检查回文长度</button>
+    <br>
+    <span>最大回文前缀长度为:</span><input id="rs" type="text">
+
+    <script>
+        function getArr() {     //获取用户输入的内容，并转化为数组
+            var usrArr = document.getElementById("usrInput").value;
+            var strArr = [];
+            for (var i = 0; i < usrArr.length; i++) {
+                strArr.push(usrArr.substr(i, 1));
+            }
+            return strArr;
+        }
+
+
+        function palindrome(array) {
+            for (var i = array.length - 1; i >= 0; i--) {                  //从末位往前，始终与数组首位相比较
+                if (array[0] == array[i]) {                                //若某位与数组首位相等，则该区间段具备成为回文的首要条件
+                    array.splice(i + 1, array.length - 1);                 //截去数组后段无用部分
+                    break;                                                 //跳出循环
+                }
+            }
+            if (array.length > 1) {
+                if (array.length % 2 == 0) {                               //判断上一步得到的数组长度为偶数还是奇数，若为偶数
+                    for (var j = 0; j < array.length / 2; j++) {           //比较首位与末位（此步可改为从第二位开始比较，因为得到的即是首尾相等的数组，此处从首位开始是为了便于理解）、首位+1与末位-1......循环次数为数组长度的1/2
+                        if (array[j] == array[array.length - 1 - j]) {
+                            continue;                                      //如果相等，则继续下一次比较
+                        } else {
+                            array.pop();                                   //如不等，说明前面拿到的具备成为回文首要条件的数组并不具备其他必要条件，删除数组末位
+                            return palindrome(array);                      //递归再次寻找
+                        }
+                    }
+                } else {
+                    for (var j = 0; j < (array.length - 1) / 2; j++) {     //数组长度为奇数的情况，遍历次数为数组长度-1的一半，其余同上
+                        if (array[j] == array[array.length - 1 - j]) {
+                            continue;
+                        } else {
+                            array.pop();
+                            return palindrome(array);
+                        }
+                    }
+                }
+            }
+            var rs = array.length;                                           //得到回文数组的长度
+            document.getElementById("rs").value = rs;
+        }
+    </script>
+</body>
+
+</html>

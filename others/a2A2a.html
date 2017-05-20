@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    .btn-box {
+        padding: 10px 0;
+    }
+    
+    .btn {
+        width: 150px;
+        height: 35px;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        background-color: #368dd9;
+    }
+</style>
+
+<body>
+
+    <h3>请在下框输入您要转换的内容:</h3>
+    <textarea name="" id="usrInput" cols="50" rows="10"></textarea>
+    <div class="btn-box">
+        <button class="btn" onclick="toUpper()">大写</button>
+        <button class="btn" onclick="toLower()">小写</button>
+        <button class="btn" onclick="firstUp()">首字母大写</button>
+    </div>
+
+    <script>
+                                     function toUpper() {
+                                         var inputValue = document.getElementById("usrInput").value;
+                                         var rs = inputValue.toUpperCase();
+                                         document.getElementById("usrInput").value = rs;
+                                     }
+                                     function toLower() {
+                                         var inputValue = document.getElementById("usrInput").value;
+                                         var rs = inputValue.toLowerCase();
+                                         document.getElementById("usrInput").value = rs;
+                                     }
+                                     function firstUp() {
+                                         var inputValue = document.getElementById("usrInput").value;
+                                         var strArr = inputValue.split(' ');
+                                         document.getElementById("usrInput").value = '';
+                                         for (var i = 0; i < strArr.length; i++) {
+                                             var word = strArr[i];
+                                             var rs = word.toLowerCase();
+                                             var rss = rs.replace(rs.charAt(0), rs.charAt(0).toUpperCase());
+                                             document.getElementById("usrInput").value += rss + ' ';
+                                         }
+                                     }
+    </script>
+</body>
+
+</html>
