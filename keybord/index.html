@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #gameZone {
+            width: 800px;
+            height: 600px;
+            position: relative;
+            border: 1px solid #999;
+        }
+        
+        #levelSelect {
+            width: 100px;
+            height: 28px;
+        }
+    </style>
+</head>
+
+<body onkeypress="removeWord(event)">
+    <select name="" id="levelSelect" onchange="selectLevel()">
+            <option value="">请选择难度</option>
+            <option value="">简单</option>
+            <option value="">普通</option>
+            <option value="">困难</option>
+        </select>
+    <button onclick="startGame()">开始游戏</button>
+    <span id="usrName"></span>
+    <span>当前得分：</span>
+    <span id="scoreScreen"></span>
+
+
+
+
+    <div id="gameZone"></div>
+</body>
+<script>
+    var wordBall = document.getElementsByClassName('wordBall');
+
+    function selectLevel() {
+        var index = document.getElementById('levelSelect').selectedIndex;
+        return index;
+    }
+
+    function startGame() {
+        if (selectLevel() == 1) {
+            playGeme(800, 50, 3);
+        }
+        if (selectLevel() == 2) {
+            playGeme(500, 35, 4);
+        }
+        if (selectLevel() == 3) {
+            playGeme(450, 25, 5);
+        }
+    }
+
+    function playGeme(a, b, c) {
+        setInterval(function() {
+            var wordBall = document.createElement('div');
+            wordBall.className = 'wordBall';
+            wordBall.style.width = '30px';
+            wordBall.style.height = '30px';
+            wordBall.style.border = "1px solid #999";
+            wordBall.style.borderRadius = '50%';
+            wordBall.style.textAlign = 'center';
+            wordBall.style.lineHeight = '30px';
+            wordBall.style.position = 'absolute';
+            wordBall.style.top = '0px';
+            wordBall.style.left = Math.floor(Math.random() * 700 + 20) + 'px';
+            wordBall.innerHTML = String.fromCharCode(Math.floor(Math.random() * 26 + 97));
+            document.getElementById("gameZone").appendChild(wordBall);
+        }, a)
+
+
+        setInterval(function() {
+            for (var i = 0; i < wordBall.length; i++) {
+                wordBall[i].style.top = parseInt(wordBall[i].style.top) + c + 'px';
+                if (parseInt(wordBall[i].style.top) > 570) {
+                    wordBall[i].parentNode.removeChild(wordBall[i]);
+                }
+            }
+        }, b);
+    }
+
+    function removeWord(press) {
+        for (var i = 0; i < wordBall.length; i++) {
+            if (wordBall[i].innerHTML == press.key) {
+                wordBall[i].parentNode.removeChild(wordBall[i]);
+                showScore(10);
+            }
+        }
+    }
+
+
+
+    var score = 0;
+    document.getElementById('scoreScreen').innerHTML = score;
+
+    function showScore(a) {
+        score += a;
+        document.getElementById('scoreScreen').innerHTML = score;
+        console.log(score);
+    }
+</script>
+
+</html>

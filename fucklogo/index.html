@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #gameZone {
+            width: 800px;
+            height: 800px;
+            position: relative;
+            border: 5px solid #999;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="gameZone">
+    </div>
+
+
+
+
+    <script>
+        var logoData = ['img/icon/icon-1.png',
+            'img/icon/icon-2.png',
+            'img/icon/icon-3.png',
+            'img/icon/icon-4.png',
+            'img/icon/icon-5.png',
+            'img/icon/icon-6.png',
+            'img/icon/icon-7.png',
+            'img/icon/icon-8.png',
+            'img/icon/icon-9.png',
+            'img/icon/icon-10.png',
+            'img/icon/icon-11.png',
+            'img/icon/icon-12.png',
+            'img/icon/icon-13.png',
+            'img/icon/icon-14.png',
+            'img/icon/icon-15.png',
+            'img/icon/icon-16.png',
+            'img/icon/icon-17.png',
+            'img/icon/icon-18.png',
+            'img/icon/icon-19.png',
+            'img/icon/icon-20.png',
+        ]
+
+
+        setInterval(function() {
+            var logo = document.createElement('img');
+            logo.onmousemove = (function() {
+                return function() {
+                    this.src = 'img/remove.gif';
+                    setTimeout(function() {
+                        logo.parentNode.removeChild(logo);
+                    }, 800)
+                };
+            })();
+            logo.className = 'logoclass';
+            logo.src = logoData[Math.floor(Math.random() * 20)];
+            logo.style.width = '80px';
+            logo.style.position = 'absolute';
+            logo.style.top = '0px';
+            logo.style.left = Math.floor(Math.random() * 700 + 20) + 'px';
+            document.getElementById('gameZone').appendChild(logo);
+        }, 1000)
+
+        var logos = document.getElementsByClassName('logoclass');
+
+        setInterval(function() {
+            for (var i = 0; i < logos.length; i++) {
+                logos[i].style.top = parseInt(logos[i].style.top) + 5 + 'px';
+                if (parseInt(logos[i].style.top) == 700) {
+                    logos[i].src = 'img/remove.gif';
+                }
+                if (parseInt(logos[i].style.top) > 750) {
+                    logos[i].parentNode.removeChild(logos[i]);
+                }
+            }
+        }, 50)
+    </script>
+
+
+</body>
+
+</html>
