@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    Array.prototype.remove=function(from,to){
+        var rest=this.slice((to||from)+1||this.length);
+        this.length=from<0?this.length+from:from;
+        return this.push.apply(this,rest);
+    }
+
+    var arr=[0,1,2,3,4,5];
+    arr.remove(2);
+    console.log(arr);
+</script>
+</html>
