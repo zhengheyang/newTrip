@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="city.min.js"></script>
+</head>
+<style>
+    select {
+        width:100px;
+        height:45px;
+    }
+</style>
+<body>
+<select name="" id="province" onchange="selectProvince()"></select>
+<select name="" id="city"></select>
+</body>
+<script>
+    var cityData=citylist.citylist;
+    console.log(cityData[0]);
+
+
+    for(var i=0;i<cityData.length;i++){
+        var option = document.createElement('option');
+        option.innerHTML = cityData[i].p;
+        document.getElementById('province').appendChild(option);
+    }
+    showCity(0);
+
+
+    function showCity(index) {
+        document.getElementById('city').innerHTML = '';
+        for (var i = 0; i < cityData[index].c.length; i++) {
+            var option = document.createElement('option');
+            option.innerHTML = cityData[index].c[i].n;
+            document.getElementById('city').appendChild(option);
+        }
+    }
+    function selectProvince() {
+        var index = document.getElementById('province').selectedIndex;
+        console.log(index);
+        showCity(index);
+}
+
+
+
+
+</script>
+</html>

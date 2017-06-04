@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="cars.js"></script>
+    <style>
+        select {
+            width: 200px;
+            height: 40px;
+            margin: 5px;
+            padding-left: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+
+<body onload="creatCarsBrand()">
+    <select name="" id="sorting" onchange="sortChange()">
+        <option value="normal">默认排序</option>
+        <option value="sortaz">字母A-Z排序</option>
+        <option value="sortza">字母Z-A排序</option>
+        <option value="sortmax">包含车系最多</option>
+        <option value="sortmin">包含车系最少</option>
+    </select>
+    <select name="" id="carsBrand" onchange="gradeChange()">
+    </select><select name="" id="carsType"></select>
+
+
+    <script>
+        //  function seriesArr(obj) {
+        //      var arr = [];
+        //      for (var key in obj) {
+        //          if (key)
+        //              arr.push(obj[key]);
+        //      }
+        //      return arr;
+        //  }
+        //  var carsList = (function (obj) {
+        //      var arr = [];
+        //      for (var key in obj) {
+        //          if (key) {
+        //              obj[key].carSeries = seriesArr(obj[key].seriesList);
+        //          }
+        //          arr.push(obj[key]);
+        //      }
+        //      return arr;
+        //  })(cars);
+
+        var carsList = [];
+        for (var carsBrandId in cars) {
+            var carsSeriesArray = [];
+            for (var seriesId in cars[carsBrandId].seriesList) {
+                carsSeriesArray.push(cars[carsBrandId].seriesList[seriesId]);
+            }
+            cars[carsBrandId].carSeries = carsSeriesArray;
+            carsList.push(cars[carsBrandId]);
+        }
+
+
+        function creatCarsBrand() {
+            for (var i = 0; i < carsList.length; i++) {
+                var option = document.createElement("option");
+                option.innerHTML = carsList[i].brand_name;
+                option.value = carsList[i].brand_id;
+                document.getElementById("carsBrand").appendChild(option);
+            }
+            gradeChange();
+        }
+
+
+        function creatSortOption() {
+            for (var i = 0; i < sortData.length; i++) {
+                var option = document.createElement("option");
+                option.innerHTML = sortData[i].sortName;
+                document.getElementById("sorting").appendChild(option);
+            }
+        }
+        creatSortOption();
+
+        function sortChange() {
+            var objS = document.getElementById("sorting");
+            var sortRule = objS.options[objS.selectedIndex].value;
+            if (sortRule == 'normal') {  //默认按品牌id排序
+                document.getElementById("carsBrand").innerHTML = '';
+                carsList.sort(function (a, b) {
+                    return a.brand_id - b.brand_id;
+                });
+                creatCarsBrand();
+            }
+            if (sortRule == 'sortaz') {  //按品牌首字母a-z排序
+                document.getElementById("carsBrand").innerHTML = '';
+                carsList.sort(function (a, b) {
+                    return a.brand_first_char.localeCompare(b.brand_first_char);  //a.brand_first_char.charCodeAt(0)-b.brand_first_charbrand_first_char.charCodeAt(0);
+                });
+                creatCarsBrand();
+            }
+            if (sortRule == 'sortza') {  //按品牌首字母z-a排序
+                document.getElementById("carsBrand").innerHTML = '';
+                carsList.sort(function (a, b) {
+                    return b.brand_first_char.localeCompare(a.brand_first_char);
+                });
+                creatCarsBrand();
+            }
+            if (sortRule == 'sortmax') {   //车系从多到少排列
+                document.getElementById("carsBrand").innerHTML = '';
+                carsList.sort(function (a, b) {
+                    return b.carSeries.length - a.carSeries.length;
+                });
+                creatCarsBrand();
+            }
+            if (sortRule == 'sortmin') {   //车系从少到多排列
+                document.getElementById("carsBrand").innerHTML = '';
+                carsList.sort(function (a, b) {
+                    return a.carSeries.length - b.carSeries.length;
+                });
+                creatCarsBrand();
+            }
+            gradeChange();
+        }
+
+        function gradeChange() {
+            document.getElementById("carsType").innerHTML = '';
+            var index = document.getElementById("carsBrand").selectedIndex;
+            for (var i = 0; i < carsList[index].carSeries.length; i++) {
+                var option = document.createElement("option");
+                option.innerHTML = carsList[index].carSeries[i].series_name;
+                document.getElementById("carsType").appendChild(option);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
