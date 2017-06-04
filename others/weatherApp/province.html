@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/weather-data.js"></script>
+    <script src="js/city.min.js"></script>
+    <script src="js/city-data-tools.js"></script>
+    <script src="http://webapi.amap.com/maps?v=1.3&key=17e516c0cfddb19be434650c1a799870&plugin=AMap.CitySearch"></script>
+    <script src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/weather.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row province-header">
+            <a href="" onclick="history.back()">
+                <返回</a>
+                    <h3>城市切换</h3>
+        </div>
+
+        <h3 id="tip" class="province-title">最常访问城市</h3>
+        <div class="row cityname" id="mostVisited">
+          <div class="col-xs-3">
+            <button id="currentCity" onclick="goToHome()">
+              正在定位
+            </button>
+          </div>
+        </div>
+
+        <h3 class="province-title">选择省份</h3>
+        <div class="row cityname" id="provinceVisited"></div>
+    </div>
+    <script>
+
+    var map = new AMap.Map("container", {
+   resizeEnable: true,
+   center: [116.397428, 39.90923],
+   zoom: 13
+});
+//获取用户所在城市信息
+   //实例化城市查询类
+   var citysearch = new AMap.CitySearch();
+   //自动获取用户IP，返回当前城市
+   citysearch.getLocalCity(function(status, result) {
+     var currentCity=result.city.split("");
+     currentCity.pop();
+     var positionCity=currentCity.join("");
+     setTimeout(function() {
+        document.getElementById('currentCity').innerHTML=positionCity;
+     }, 1500);
+   });
+
+
+
+function goToHome(){
+  localStorage.setItem("last", document.getElementById('currentCity').innerHTML);
+  location.assign("weather.html");
+}
+
+
+
+
+        var mostVisitedCity = getMostUseCity();
+        for (var j = 0; j < mostVisitedCity.length; j++) {
+            var mostCity = document.createElement("div");
+            mostCity.className = "col-xs-3";
+            var button = document.createElement("button");
+            button.innerHTML = mostVisitedCity[j].name;
+            button.onclick = (function(a) {
+                return function() {
+                    addCityCount(mostVisitedCity[a].name);
+                    localStorage.setItem("last", mostVisitedCity[a].name);
+                    location.assign("weather.html");
+                }
+            })(j);
+            mostCity.appendChild(button);
+            document.getElementById("mostVisited").appendChild(mostCity);
+        }
+
+
+
+        for (var i = 0; i < citylist.citylist.length; i++) {
+            var province = document.createElement("div");
+            province.className = "col-xs-3";
+            var button = document.createElement("button");
+            button.innerHTML = citylist.citylist[i].p;
+            button.onclick = (function(a) {
+                return function() {
+                    location.assign("city.html");
+                    localStorage.setItem("cityName", JSON.stringify(a));
+                }
+            })(citylist.citylist[i].c);
+            province.appendChild(button);
+            document.getElementById("provinceVisited").appendChild(province);
+        }
+    </script>
+
+</body>
+
+</html>
