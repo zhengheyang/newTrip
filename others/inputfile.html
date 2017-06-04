@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+<input id="inputFile" multiple="multiple" onchange="getFile()" type="file" name="" value="">
+<div id="picbox"></div>
+</body>
+<script>
+    function creatImg(url) {
+        var img = document.createElement('img');
+        img.src = url;
+        document.getElementById('picbox').appendChild(img);
+    }
+
+    function getFile() {
+        var file = document.getElementById('inputFile').files;
+        for (var i = 0; i < file.length; i++) {
+            var reader = new FileReader();
+            reader.readAsDataURL(document.getElementById('inputFile').files[i]);
+            reader.onload = function (event) {
+                creatImg(event.target.result);
+            }
+        }
+    }
+</script>
+
+</html>

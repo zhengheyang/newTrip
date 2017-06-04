@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>canvas</title>
+  <style>
+    div select {
+      width: 100px;
+      height: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <center>
+    <canvas id="myCanvas" width="800" height="600" style="border: 1px solid #666;cursor:default;"></canvas>
+    <div>
+      <span>画笔颜色：</span>
+      <select name="" id="penColor" onchange="colorPick()">
+            <option value="">黑色</option>
+            <option value="">红色</option>
+            <option value="">蓝色</option>
+        </select>
+      <span>画笔粗细：</span>
+      <select name="" id="lineWidth" onchange="WidthSelect()">
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="">3</option>
+        </select>
+      <span>画笔形状:</span>
+      <select name="" id="penType" onchange="typeSelect()">
+            <option value="">自由</option>
+            <option value="">直线</option>
+        </select>
+    </div>
+
+  </center>
+
+
+
+</body>
+<script>
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  (function() {
+    var startDraw = false;
+    c.onmousedown = function() {
+      var drawX = event.pageX - c.offsetLeft - 1;
+      var drawY = event.pageY - c.offsetTop - 1;
+      ctx.beginPath();
+      ctx.moveTo(drawX, drawY);
+      startDraw = true;
+      ctx.strokeStyle = colorPick();
+      ctx.lineWidth = WidthSelect();
+    }
+    c.onmousemove = function() {
+      var drawX = event.pageX - c.offsetLeft - 1;
+      var drawY = event.pageY - c.offsetTop - 1;
+      if (startDraw) {
+        ctx.lineTo(drawX, drawY);
+        ctx.stroke();
+      }
+    }
+    c.onmouseup = function() {
+      ctx.closePath();
+      startDraw = false;
+    }
+    c.onmouseout = function() {
+      ctx.closePath();
+      startDraw = false;
+    }
+  })();
+
+
+  //颜色选择
+  function colorPick() {
+    var index = document.getElementById('penColor').selectedIndex;
+    if (index == 0) {
+      return strokeStyle = "#000";
+    }
+    if (index == 1) {
+      return strokeStyle = "#ff0000";
+    }
+    if (index == 2) {
+      return strokeStyle = "#0000ff";
+    }
+  }
+
+  // 线宽
+  function WidthSelect() {
+    var index = document.getElementById('lineWidth').selectedIndex;
+    if (index == 0) {
+      return lineWidth = 1;
+    }
+    if (index == 1) {
+      return lineWidth = 2;
+    }
+    if (index == 2) {
+      return lineWidth = 3;
+    }
+  }
+
+  // 画笔类型
+  function typeSelect() {
+    var index = document.getElementById('penType').selectedIndex;
+    if (index == 0) {
+      //
+    }
+    if (index == 1) {
+      straitLine();
+    }
+  }
+
+  function straitLine() {
+    var startDraw = false;
+    c.onmousedown = function() {
+      var drawX = event.pageX - c.offsetLeft - 1;
+      var drawY = event.pageY - c.offsetTop - 1;
+      ctx.beginPath();
+      ctx.moveTo(drawX, drawY);
+      startDraw = true;
+      ctx.strokeStyle = colorPick();
+      ctx.lineWidth = WidthSelect();
+    }
+    c.onmouseup = function() {
+      var drawX = event.pageX - c.offsetLeft - 1;
+      var drawY = event.pageY - c.offsetTop - 1;
+      if (startDraw) {
+        ctx.lineTo(drawX, drawY);
+        ctx.stroke();
+      }
+      ctx.closePath();
+      startDraw = false;
+    }
+  }
+</script>
+
+</html>
