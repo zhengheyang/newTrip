@@ -16,3 +16,4 @@ function showPic(whichpic) {
 //     alert (body_element.nodeType);
 // }
 // window.onload=countBodyChildren();
+//
