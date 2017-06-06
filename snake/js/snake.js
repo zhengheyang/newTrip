@@ -66,7 +66,7 @@ setInterval(function() {
 
     //死亡
     if(snake.body[snake.body.length - 1].x<0||snake.body[snake.body.length - 1].x*checkbord.step>checkbord.width-checkbord.step||snake.body[snake.body.length - 1].y<0||snake.body[snake.body.length - 1].y*checkbord.step>checkbord.height-checkbord.step){
-      alert('game over');
+      alert('游戏结束,你最终得分为'+score+'分!');
       location.reload();
     }
   showSnake();
@@ -95,11 +95,13 @@ setInterval(function() {
   // 蛇吃到食物，食物消失，蛇长度+1
   if (headX == food.x / checkbord.step && headY == food.y / checkbord.step) {
     snakeEat();
+    score+=10;
+    showScore();
     changeFood();
   }
 
 
-}, 100);
+}, 60);
 
 //随机给棋盘中投放食物
 var food = {
@@ -121,4 +123,9 @@ function snakeEat() {
     y: headY
   };
   snake.body.unshift(newSnake);
+}
+
+var score=0;
+function showScore () {
+  document.getElementById('score').innerHTML='当前得分为：'+score+'分';
 }

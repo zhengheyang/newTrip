@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>scratch-card</title>
+</head>
+
+<body>
+
+    <canvas id="backCanvas" width="300" height="100" style="border:1px solid #666;position: absolute;left: 0;top: 0;"></canvas>
+    <canvas id="myCanvas" onmousedown="mouseDown()" onmousemove="mouseMove()" onmouseup="mouseUp()" width="300" height="100" style="border:1px solid #666;position: absolute;left: 0;top: 0;"></canvas>
+
+
+
+    <button onclick="reStart()" style="margin-top:120px;">再吃一包刮刮看...</button>
+
+
+
+
+
+</body>
+<script>
+    var textArr = ['谢谢惠顾', '再来一包'];
+    var randomText = textArr[Math.floor(Math.random() * textArr.length * 0.6)];
+
+    var bc = document.getElementById('backCanvas');
+    var bctx = bc.getContext("2d");
+    bctx.font = "30px 微软雅黑";
+    bctx.fillText(randomText, 60, 60);
+
+
+    var c = document.getElementById('myCanvas');
+    var ctx = c.getContext("2d");
+
+    // ctx.fillStyle="#a8a8a8";
+    // ctx.fillRect(0,0,300,100);
+
+    var imgData = ctx.createImageData(300, 100);
+    for (var i = 0; i < imgData.data.length; i += 4) {
+        imgData.data[i + 0] = 255;
+        imgData.data[i + 1] = 0;
+        imgData.data[i + 2] = 0;
+        imgData.data[i + 3] = 255;
+    }
+    ctx.putImageData(imgData, 0, 0);
+
+
+    var isDown = false;
+
+    function mouseDown() {
+        isDown = true;
+        var x = event.offsetX;
+        var y = event.offsetY;
+        ctx.clearRect(x, y, 20, 20);
+    }
+
+    function mouseMove() {
+        if (isDown) {
+            var x = event.offsetX;
+            var y = event.offsetY;
+            ctx.clearRect(x, y, 15, 15);
+        }
+    }
+
+    function mouseUp() {
+        isDown = false;
+    }
+
+    var code = setInterval(function() {
+        var data = ctx.getImageData(0, 0, 300, 100);
+        var tempArr = [];
+        for (var i = 0; i < data.data.length; i++) {
+            if (data.data[i] == 0) {
+                tempArr.push(data.data[i]);
+            }
+        }
+        if (tempArr.length / data.data.length > 0.65) {
+            alert(isWin());
+            clearInterval(code);
+            isDown = false;
+        }
+    }, 50);
+
+    function isWin() {
+        var text = randomText;
+        if (text == '再来一包') {
+            return '恭喜您可以再吃一包！'
+        } else {
+            return '很遗憾，再多吃一包吧！'
+        }
+    }
+
+    function reStart() {
+        location.reload();
+    }
+</script>
+
+</html>
