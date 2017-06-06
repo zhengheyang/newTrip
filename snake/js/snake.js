@@ -33,16 +33,17 @@ ctx.strokeStyle = "#fff";
 function showSnake() {
   ctx.clearRect(0, 0, checkbord.width, checkbord.height);
   //绘制棋盘
-  for (var i = 0; i < checkbord.width / checkbord.step; i++) {
-    for (var j = 0; j < checkbord.height / checkbord.step; j++) {
-      ctx.strokeRect(i * checkbord.step, j * checkbord.step, checkbord.step, checkbord.step);
-    }
-  }
+  // for (var i = 0; i < checkbord.width / checkbord.step; i++) {
+  //   for (var j = 0; j < checkbord.height / checkbord.step; j++) {
+  //     ctx.strokeRect(i * checkbord.step, j * checkbord.step, checkbord.step, checkbord.step);
+  //   }
+  // }
   //把蛇放进格子里
   for (var k = 0; k < snake.body.length; k++) {
     var s = snake.body[k];
     ctx.fillStyle = s.color;
     ctx.fillRect(s.x * checkbord.step + 1, s.y * checkbord.step + 1, checkbord.step - 2, checkbord.step - 2);
+    // ctx.arc(s.x*checkbord.step-checkbord.step/2,s.y*checkbord.step-checkbord.step/2,checkbord.step/2,0,Math.PI*2);
   }
   // 放入食物
   ctx.fillStyle = food.color;
@@ -62,6 +63,12 @@ var headX = 5;
 var headY = 3;
 
 setInterval(function() {
+
+    //死亡
+    if(snake.body[snake.body.length - 1].x<0||snake.body[snake.body.length - 1].x*checkbord.step>checkbord.width-checkbord.step||snake.body[snake.body.length - 1].y<0||snake.body[snake.body.length - 1].y*checkbord.step>checkbord.height-checkbord.step){
+      alert('game over');
+      location.reload();
+    }
   showSnake();
 
   headX = snake.body[snake.body.length - 1].x;
@@ -90,6 +97,8 @@ setInterval(function() {
     snakeEat();
     changeFood();
   }
+
+
 }, 100);
 
 //随机给棋盘中投放食物
@@ -104,7 +113,6 @@ function changeFood() {
   food.y = Math.floor(Math.random() * checkbord.height / checkbord.step) * checkbord.step;
   food.color = '#' + Math.floor(Math.random() * 15).toString(16) + Math.floor(Math.random() * 15).toString(16) + Math.floor(Math.random() * 15).toString(16);
 }
-
 
 function snakeEat() {
   var newSnake = {
