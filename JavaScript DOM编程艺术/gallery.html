@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Image Gallery</title>
     <link rel="stylesheet" href="styles/layout.css" media="screen">
 </head>
+
 <body>
     <h1>Snapshots</h1>
-    <ul>
+    <ul id="imagegallery">
         <li>
-            <a href="images/fireworks.jpg" onclick="showPic(this);return false;" title="A fireworks display">Fireworks</a>
+            <a href="images/fireworks.jpg" title="A fireworks display">Fireworks</a>
         </li>
         <li>
-            <a href="images/coffee.jpg"  onclick="showPic(this);return false;" title="A cup of black coffee">Coffee</a>
+            <a href="images/coffee.jpg" title="A cup of black coffee">Coffee</a>
         </li>
         <li>
-            <a href="images/rose.jpg"  onclick="showPic(this);return false;" title="A red,red rose">Rose</a>
+            <a href="images/rose.jpg" title="A red,red rose">Rose</a>
         </li>
         <li>
-            <a href="images/bigben.jpg"  onclick="showPic(this);return false;" title="The famous clock">Big Ben</a>
+            <a href="images/bigben.jpg" title="The famous clock">Big Ben</a>
         </li>
     </ul>
     <img id="placeholder" src="images/placeholder.jpg" alt="my image gallery">
@@ -27,6 +29,7 @@
 
 
 
-<script type="text/javascript" src="scripts/showPic.js"></script>
+    <script type="text/javascript" src="scripts/showPic.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <div id="nameWindow" style="font-size:30px;width:200px;height:60px;line-height:60px;border:1px solid #666;"></div>
+        <button onclick="startRoll()">开始</button>
+        <button onclick="stopRoll()">停止</button>
+    </center>
+
+    <script>
+        var nameArr = ['totti', 'ronaldo', 'kaka', 'sanchez', 'ozil', 'terry', 'giggs', 'robben', 'figo', 'modric'];
+
+        var code = [];
+
+        function startRoll() {
+            var num = setInterval(function() {
+                document.getElementById("nameWindow").innerHTML = nameArr[Math.floor(Math.random() * nameArr.length)];
+            }, 50);
+            code.push(num);
+        }
+
+        function stopRoll() {
+            code.forEach(function(value) {
+                clearInterval(value);
+            });
+            code = [];
+        }
+    </script>
+</body>
+
+</html>
