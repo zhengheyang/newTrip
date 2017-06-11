@@ -1,0 +1,23 @@
+{
+  "name": "weatherApp",
+  "authors": [
+    "zhengheyang <zhenghe_yang@hotmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "animate.css": "^3.5.2",
+    "jquery": "^3.2.1",
+    "wow": "wowjs#^1.1.2"
+  }
+}

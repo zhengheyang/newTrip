@@ -1,0 +1,125 @@
+.header {
+    padding: 1em;
+    background-color: #1e96f2;
+    color: #fff;
+}
+
+.header-right {
+    text-align: right;
+}
+
+.header-right h5 {
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#location {
+    display: inline-block;
+}
+
+a,
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.title-box {
+    padding: 0 1em;
+    color: #666;
+    position: relative;
+}
+
+#title {
+    margin-bottom: 0;
+}
+
+.tmp-box {
+    text-align: right;
+}
+
+.tmp-box h4 {
+    display: inline-block;
+}
+
+.weather-section {
+    padding: 0 1em;
+    color: #666;
+}
+
+.weather-section h4 {
+    line-height: 28px;
+}
+
+.clear {
+    clear: both;
+}
+
+.province-header {
+    background-color: #157bd2;
+    padding: 0 15px;
+    position: relative;
+}
+
+.province-header h3 {
+    text-align: center;
+    color: #fff;
+}
+
+.province-header a {
+    display: block;
+    position: absolute;
+    left: 15px;
+    font-size: 20px;
+    line-height: 56px;
+}
+
+.province-title {
+    color: #5faaf5;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 7px;
+}
+
+.col-xs-3 {
+    padding: 0 5px;
+}
+
+.cityname button {
+    font-size: 16px;
+    color: #848789;
+    display: inline-block;
+    background-color: #eaf4ff;
+    text-align: center;
+    padding: 8px;
+    margin-top: 8px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+}
+
+.row {
+    padding: 0 15px;
+}
+
+#voiceBtn {
+    width: 45px;
+    height: 45px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: #1e96f2;
+    text-align: center;
+    line-height: 45px;
+    position: absolute;
+    left: 30px;
+    top: -30px;
+}
+
+#voiceBtn img {
+    width: 25px;
+}
+
+#suggestionInfo {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #666;
+}
