@@ -32,6 +32,10 @@ function getMostUseCity() {
         {
             name: "成都",
             count: 0
+        },
+        {
+            name: "西安",
+            count: 0
         }
     ];
 
@@ -44,10 +48,10 @@ function getMostUseCity() {
     }
 
 
-    cityArr.sort(function(a, b) {
+    cityArr.sort(function (a, b) {
         return b.count - a.count;
     });
-    return cityArr.splice(0, 7);
+    return cityArr.splice(0, 8);
 
 }
 
@@ -64,9 +68,6 @@ function getCityData() {
         return JSON.parse(data);
     }
 }
-
-
-
 
 
 //增加城市访问计数
@@ -101,11 +102,10 @@ function getWeatherApi(city) {
             city: city + "市",
             key: '529bd5eca4814a4dbf7aaf00cf2d136f'
         },
-        function(data) {
-            localStorage.setItem("currentData", JSON.stringify(data.HeWeather5[0]));
-
-            if(city.split('')[city.length-1]=='区'){
-                city=city.substring(0,city.length-1);
+        function (data) {
+            var currentData = data.HeWeather5[0];
+            if (city.split('')[city.length - 1] == '区') {
+                city = city.substring(0, city.length - 1);
             }
             $.ajax({
                 type: 'get',
@@ -114,31 +114,32 @@ function getWeatherApi(city) {
                 dataType: 'jsonp',
                 jsonp: 'callback',
                 jsonpCallback: 'data',
-                success: function(data) {
-                    localStorage.setItem("forecastData", JSON.stringify(data.result));
-                    location.assign("index.html");
+                success: function (data) {
+                    var forecastData = data.result;
+                    showCurrent(currentData);
+                    showForecast(forecastData);
                 },
-                error: function() {
+                error: function () {
                     alert('请重试');
                 }
             });
         });
 }
 
-function nowApiCity() {
-    $.ajax({
-        type          : 'get',
-        async         : false,
-        url           : 'http://api.k780.com/?app=weather.city&appkey=26019&sign=b90eb519ff16ddbc533dfcee16ed41f0&format=json&jsoncallback=data',
-        dataType      : 'jsonp',
-        jsonp         : 'callback',
-        jsonpCallback : 'data',
-        success       : function(data) {
-            console.log(data);
-        },
-        error:function(){
-            alert('fail');
-        }
-    });
-}
 
+// function nowApiCity() {
+//     $.ajax({
+//         type          : 'get',
+//         async         : false,
+//         url           : 'http://api.k780.com/?app=weather.city&appkey=26019&sign=b90eb519ff16ddbc533dfcee16ed41f0&format=json&jsoncallback=data',
+//         dataType      : 'jsonp',
+//         jsonp         : 'callback',
+//         jsonpCallback : 'data',
+//         success       : function(data) {
+//             console.log(data);
+//         },
+//         error:function(){
+//             alert('fail');
+//         }
+//     });
+// }

@@ -1,5 +1,4 @@
 .header {
-    padding: 1em;
     background-color: #1e96f2;
     color: #fff;
 }
@@ -110,10 +109,15 @@ a:hover {
     text-align: center;
     line-height: 45px;
     position: absolute;
-    left: 30px;
+    right: 30px;
     top: -30px;
+    transition: 0.3s;
 }
-
+#voiceBtn:hover {
+    border:2px solid #eee;
+    background-color: #1e80f2;
+    box-shadow: 0 0 3px #666;
+}
 #voiceBtn img {
     width: 25px;
 }
@@ -123,3 +127,21 @@ a:hover {
     font-size: 18px;
     color: #666;
 }
+
+
+.clock {
+    color: #fff;
+    font-size: 18px;
+}
+
+#hours,
+#minutes {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+#seconds {
+    font-size: 20px;
+}
+
+
