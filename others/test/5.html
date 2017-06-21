@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    for (var i = 100; i < 999; i++) {
+        var x = (i - i % 100) / 100;
+        var y = ((i - 100 * x) - (i - 100 * x) % 10) / 10;
+        var z = (i - 100 * x - 10 * y);
+        var sum = Math.pow(x, 3) + Math.pow(y, 3) + Math.pow(z, 3);
+        if (sum === i) {
+            console.log(i);
+        }
+    }
+
+
+</script>
+</body>
+</html>

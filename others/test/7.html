@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <script>
+    var str = 'Cross the greatwall,We can reach every corner of the world.'
+    //Cross the ********,** can ***** every corner of the world.
+    var mgArr = ["we", "greatwall", "each"];               //敏感词数组
+    for (var i = 0; i < mgArr.length; i++) {
+      var reg = new RegExp('\\w*'+mgArr[i]+'\\w*', "ig"); //构造一个正则对象，敏感词前后有无字母或有多少字母(即只要出现敏感词整个单词匹配)，全局忽略大小写
+      var star='';
+      for(var j=0;j<str.match(reg)[0].length;j++){        //str.match(reg)[0]为正则匹配的原字符串中的单词
+        star +='*';                                       // *数量为单词长度
+      }
+      str = str.replace(reg, star);
+    }
+    console.log(str);
+  </script>
+</body>
+
+</html>

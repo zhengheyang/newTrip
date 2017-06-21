@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    $.ajax({
+        "url":"http://study.bigbug.tech/test.json",
+        "type":"GET",
+        "success":function(data){
+            for(var i=0;i<data.data.length;i++){
+                console.log(data.data[i].context+'\n'+data.data[i].time);
+            }
+        }
+    })
+
+
+
+//    $.get('http://study.bigbug.tech/test.json',function (data) {
+//        console.log(data.data);
+//        for(var i=0;i<data.data.length;i++){
+//            console.log(data.data[i].context+data.data[i].time);
+//        }
+//    })
+</script>
+</html>
