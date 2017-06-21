@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="weather-data.js"></script>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li>
+                <a ng-click="page=page-1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a ng-click="page=1">1</a></li>
+            <li><a ng-click="page=2">2</a></li>
+            <li><a ng-click="page=3">3</a></li>
+            <li>
+                <a ng-click="page=page+1" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!--<input type="text" ng-model="keyword">-->
+    <table class="table table-striped">
+        <tr>
+            <th>日期</th>
+            <th>天气情况</th>
+            <th>最低温度</th>
+            <th>最高温度</th>
+            <th>风向</th>
+            <th>图标</th>
+        </tr>
+        <tr ng-repeat="weather in weatherData | limitTo:3:(page-1)*3">
+            <td>{{weather.date}}</td>
+            <td>{{weather.cond.txt_d}}转{{weater.cond.txt_n}}</td>
+            <td>{{weather.tmp.min}}</td>
+            <td>{{weather.tmp.max}}</td>
+            <td>{{weather.wind.dir}}</td>
+            <td></td>
+
+        </tr>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <table class="table">
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+        </tr>
+        <tr ng-repeat="usr in usrInfo">
+            <td>{{usr.name}}</td>
+            <td>{{usr.gender|fgender}}</td>
+        </tr>
+    </table>
+    性别过滤 <input type="number" ng-model="sex">
+    输入的性别为：{{sex|fgender}}
+    <br>
+    <br>
+    <br>
+    首字母大写 <input type="text" ng-model="inputword">
+    输出：{{inputword|firstUp}}
+    <br>
+    <br>
+    <br>
+    货币转换 <input type="number" ng-model="money">
+    输出：{{money|moneyf:'￥'}}
+    <br>
+    <br>
+    <br>
+
+</div>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $scope.weatherData = weatherData.HeWeather[0].daily_forecast;
+        $scope.usrInfo = [{
+            name: 'jack',
+            gender: 1
+        }, {
+            name: 'marry',
+            gender: 0
+        }, {
+            name: 'peter',
+            gender: 2
+        }]
+    })
+
+    app.filter('fgender', function () { //可以注入依赖
+        return function (num) {
+            if (num == 1) {
+                return '男';
+            } else if (num == 0) {
+                return '女';
+            } else {
+                return '不详';
+            }
+        }
+    });
+
+    app.filter('firstUp', function () {
+        return function (word) {
+            if (!word) {
+                return "请输入";
+            }
+            var arr = word.split(' ');
+            for (var i = 0; i < arr.length; i++) {
+                arr[i] = arr[i].toLowerCase();
+                arr[i] = arr[i].split('');
+                arr[i][0] = arr[i][0].toUpperCase();
+                arr[i] = arr[i].join('');
+            }
+            return arr.join(' ');
+        }
+    });
+
+    app.filter('moneyf', function () {
+        return function (a, b) {
+            if (!a) {
+                return '请输入';
+            }
+            if (!b) {
+                return '$' + ' ' + a;
+            }
+
+            var str = a.toString();
+            var reg = /\./gi;
+
+            if (reg.test(str)) {
+                var arr = str.split('.');
+                var numArr = arr[0].split('');
+                numArr.reverse();
+                var tempArr = [];
+                for (var i = 0; i < numArr.length; i++) {
+                    if (numArr.length <= 3) {
+                        tempArr.push(numArr[i]);
+                    } else {
+                        tempArr.push(numArr[i]);
+                        if ((i + 1) % 3 == 0 && (i + 1) < numArr.length) {
+                            tempArr.push(',')
+                        }
+                    }
+                }
+                tempArr.reverse();
+                var lastArr = arr[1].split('');
+                if (lastArr.length < 2) {
+                    lastArr.push(0);
+                } else if (lastArr.length == 2) {
+                    lastArr = lastArr;
+                } else {
+                    if (lastArr[2] < 5) {
+                        lastArr.splice(2)
+                    } else {
+                        lastArr[1] = Number(lastArr[1]) + 1;
+                        lastArr.splice(2)
+                    }
+                }
+                lastArr.unshift('.');
+                var newArr = tempArr.concat(lastArr);
+                a = newArr.join('');
+
+            } else {
+                var numArr = str.split('');
+                numArr.reverse();
+                var tempArr = [];
+                for (var i = 0; i < numArr.length; i++) {
+                    if (numArr.length <= 3) {
+                        tempArr.push(numArr[i]);
+                    } else {
+                        tempArr.push(numArr[i]);
+                        if ((i + 1) % 3 == 0 && (i + 1) < numArr.length) {
+                            tempArr.push(',')
+                        }
+                    }
+                }
+                tempArr.reverse();
+                var lastArr = ['.', 0, 0];
+                var newArr = tempArr.concat(lastArr);
+                a = newArr.join('');
+            }
+            return b + ' ' + a;
+        }
+    })
+
+
+</script>
+</body>
+</html>

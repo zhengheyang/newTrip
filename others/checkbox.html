@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="helloCtrl">
+        <input type="checkbox" ng-model="isSelect" ng-click="selectAll()">全选
+        <button ng-click="delete()">删除</button>
+        <button ng-click="addCart()">添加</button>
+        <br>
+        <div ng-repeat="key in cart">
+            <input type="checkbox" ng-model="key.isChecked">{{$index+1}} {{key.name}}
+        </div>
+    </div>
+    </div>
+</body>
+<script>
+var app = angular.module('myApp', []);
+app.controller('helloCtrl', function($scope) {
+    $scope.cart = [{
+        name: '鞋子',
+        isChecked: false
+    }, {
+        name: 'T恤',
+        isChecked: false
+    }, {
+        name: '牛仔裤',
+        isChecked: false
+    }];
+    $scope.isSelect = false;
+    $scope.selectAll = function() {
+        $scope.cart.map(function(p1, p2, p3) {
+            p1.isChecked = $scope.isSelect;
+        });
+    }
+    $scope.delete = function() {
+        $scope.cart = $scope.cart.filter(function(p1, p2, p3) {
+            return !p1.isChecked == true;
+        })
+    }
+    $scope.addCart = function() {
+        $scope.cart.push({
+            name: '其他',
+            isChecked: false
+        })
+    }
+});
+</script>
+
+</html>

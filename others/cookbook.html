@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bower_components/ladda-bootstrap/dist/ladda-themeless.min.css">
+    <script src="bower_components/ladda-bootstrap/dist/spin.min.js"></script>
+    <script src="bower_components/ladda-bootstrap/dist/ladda.min.js"></script>
+    <style>
+        .main {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .main h1,h2 {
+            color: #d94f54;
+            font-weight: bold;
+        }
+        .shadow {
+            box-shadow: 2px 2px 2px #d9d9d9;
+            margin:10px 0;
+            color: #ee9689;
+        }
+        .row {
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+<header style="text-align: center"><img src="img/food-clothing.svg" alt="" width="300"></header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group">
+                <input id="searchBar" type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+        <a href="#" id="form-submit" class="btn btn-danger ladda-button" data-style="expand-left"><span
+                class="ladda-label">搜索</span></a>
+      </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-md-12 -->
+    </div><!-- /.row -->
+    <div class="main">
+
+    </div>
+
+</div>
+<script>
+    $(function () {
+        $('#form-submit').click(function (e) {
+            e.preventDefault();
+            var l = Ladda.create(this);
+            l.start();
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: 'http://api.jisuapi.com/recipe/search?keyword=' + $('#searchBar').val() + '&num=10&appkey=5f612ec65ed1712c',
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                jsonpCallback: 'data',
+                success: function (data) {
+                    console.log(data);
+                    showCook(data);
+                },
+                error: function () {
+                    alert('请重试');
+                }
+            })
+                .always(function () {
+                    l.stop();
+                });
+            return false;
+        });
+    });
+    //    var data=data.result.list[i].
+    //    <small>'+data.result.list[i].content+'</small>
+    function showCook(data) {
+        for (var i = 0; i < data.result.list.length; i++) {
+            $('.main').append('<div class="row"><div class="col-md-12"><em style="font-size: 36px;color: #ee9689;">'+(i+1)+'</em></div></div>');
+            $('.main').append('<div class="row shadow"><div class="col-md-5 col-sm-5 col-xs-12"><img class="img-responsive" src="' + data.result.list[i].pic + '" alt=""></div><div class="col-md-7 col-sm-7 col-xs-12"><h1>' + data.result.list[i].name + '</h1><p>人数：' + data.result.list[i].peoplenum + '</p><p>准备时间：' + data.result.list[i].preparetime + '</p><p>烹饪时间：' + data.result.list[i].cookingtime + '</p><p>' + data.result.list[i].tag + '</p></div></div>');
+            $('.main').append('<div class="row" style="padding-top: 20px;padding-bottom: 20px"><blockquote><p>' + data.result.list[i].content + '</p></blockquote></div>');
+            $('.main').append('<div class="row"><h2 class="col-md-12">用料</h2></div>');
+            for (var j = 0; j < data.result.list[i].material.length; j++) {
+                $('.main').append('<div class="row"><div class="col-md-12 material"><div class="col-md-12"><p>' + data.result.list[i].material[j].mname + ' ' + data.result.list[i].material[j].amount + '</p></div></div></div>');
+            }
+            $('.main').append('<div class="row"><h2 class="col-md-12">步骤</h2></div>');
+            for (var k = 0; k < data.result.list[i].process.length; k++) {
+                $('.main').append('<div class="row shadow"><div class="col-md-12 process"><div class="col-md-7 col-sm-7 col-xs-12"><p class="lead"><em style="font-size: 22px;color: #ee9689;">' + (k + 1) + '、</em>' + data.result.list[i].process[k].pcontent + '</p></div><div class="col-md-5 col-sm-5 col-xs-12"><img src="' + data.result.list[i].process[k].pic + '" alt=""></div></div></div>');
+            }
+        }
+    }
+</script>
+</body>
+</html>

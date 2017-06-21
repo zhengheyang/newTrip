@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+</head>
+
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+    <button ng-click="addTr()">添加新用户</button>
+    <button ng-click="confirmAll()">确认全部</button>
+    <button ng-click="deleteAll()">删除全部</button>
+    <button ng-click="saveAll()">保存全部</button>
+    <table  id="myTable" border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th width="100">流水号</th>
+            <th width="180">姓名</th>
+            <th width="180">电话</th>
+            <th width="100">操作</th>
+        </tr>
+        <tr ng-repeat="key in usrInfo">
+            <td>{{$index}}</td>
+            <td><input type="text" ng-show="key.inputShow" ng-model="key.name"><span ng-hide="key.inputShow">{{key.name}}</span></td>
+            <td><input type="text" ng-show="key.inputShow" ng-model="key.phone"><span ng-hide="key.inputShow">{{key.phone}}</span></td>
+            <td>
+                <button ng-click="conOrDel($index)">{{key.btn}}</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $scope.usrInfo = [{
+            name: 'jack',
+            phone: '111111',
+            btn: '删除',
+            inputShow: false
+        }, {
+            name: 'tom',
+            phone: '222222',
+            btn: '删除',
+            inputShow: false
+        }, {
+            name: 'mike',
+            phone: '333333',
+            btn: '删除',
+            inputShow: false
+        }];
+
+        $scope.addTr = function () {
+            $scope.usrInfo.push({
+                name: '',
+                phone: '',
+                btn: '确认',
+                inputShow: true
+            });
+        }
+
+        $scope.conOrDel = function (index) {
+            if ($scope.usrInfo[index].inputShow == false) {
+                $scope.usrInfo.splice(index, 1);
+            }else {
+                $scope.usrInfo[index].btn='删除';
+                $scope.usrInfo[index].inputShow = false;
+                console.log($scope.usrInfo);
+            }
+        }
+
+        $scope.deleteAll=function () {
+            $scope.usrInfo=[];
+        }
+        
+        $scope.confirmAll=function () {
+            $scope.usrInfo.map(function (p1, p2, p3) {
+                p1.inputShow = false;
+            })
+        }
+
+//        $scope.saveAll=function () {
+//            localStorage.setItem('usrinfo',JSON.stringify($scope.usrInfo));
+//        }
+
+    });
+
+
+</script>
+
+</html>
