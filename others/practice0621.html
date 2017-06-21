@@ -9,6 +9,7 @@
 </head>
 <body>
 <div ng-app="myApp" ng-controller="myCtrl">
+
     <nav aria-label="Page navigation">
         <ul class="pagination">
             <li>
@@ -26,7 +27,8 @@
             </li>
         </ul>
     </nav>
-    <!--<input type="text" ng-model="keyword">-->
+
+
     <table class="table table-striped">
         <tr>
             <th>日期</th>
@@ -36,14 +38,14 @@
             <th>风向</th>
             <th>图标</th>
         </tr>
-        <tr ng-repeat="weather in weatherData | limitTo:3:(page-1)*3">
+        <!--<tr ng-repeat="weather in weatherData | limitTo:3:(page-1)*3">-->
+        <tr ng-repeat="weather in weatherData" style="height: 56px">
             <td>{{weather.date}}</td>
-            <td>{{weather.cond.txt_d}}转{{weater.cond.txt_n}}</td>
+            <td>{{weather.cond.txt_d}}转{{weather.cond.txt_n}}</td>
             <td>{{weather.tmp.min}}</td>
             <td>{{weather.tmp.max}}</td>
             <td>{{weather.wind.dir}}</td>
-            <td></td>
-
+            <td style="background: url('weatherImg.png') no-repeat {{weather.cond.code_d | logo}}"></td>
         </tr>
     </table>
 
@@ -93,7 +95,7 @@
         }]
     })
 
-    app.filter('fgender', function () { //可以注入依赖
+    app.filter('fgender', function () {
         return function (num) {
             if (num == 1) {
                 return '男';
@@ -188,8 +190,23 @@
             return b + ' ' + a;
         }
     })
-
-
+    //cond.code_d:100 晴
+    //cond.code_d:101 多云
+    //cond.code_d:104 阴
+    //cond.code_d:305 小雨
+    app.filter('logo', function () {
+        return function (logoId) {
+            if (logoId == 100) {
+                return '0 -672px'
+            } else if (logoId == 101) {
+                return '0 -560px'
+            } else if (logoId == 305) {
+                return '0 -56px'
+            } else if (logoId == 104) {
+                return '0 -504px'
+            }
+        }
+    })
 </script>
 </body>
 </html>
