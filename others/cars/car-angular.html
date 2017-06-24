@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="cars.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <select name="" id="" ng-model="carBrand" ng-init="carBrand=(cars| orderBy:'brand_first_char')[0]" ng-options="(car.brand_first_char+'---'+car.brand_name) group by car.brand_first_char for car in cars | orderBy:'brand_first_char'" ng-change="selectCar()"></select>
+        <select name="" id="" ng-model="carSeries" ng-init="carSeries=(cars| orderBy:'brand_first_char')[0].carsSeries[0]" ng-options="series.series_name for series in carBrand.seriesList"></select>
+    </div>
+</body>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    //数据解析
+    var carsBrands = new Array;
+    for (var carsBrandId in cars) {
+        var carsSeriesArray = [];
+        for (var seriesId in cars[carsBrandId].seriesList) {
+            carsSeriesArray.push(cars[carsBrandId].seriesList[seriesId]);
+        }
+        cars[carsBrandId].carsSeries = carsSeriesArray;
+        carsBrands.push(cars[carsBrandId]);
+    }
+    //
+
+    $scope.cars = carsBrands;
+
+    $scope.selectCar = function() {
+        $scope.carSeries = $scope.carBrand.carsSeries[0];
+    }
+});
+</script>
+
+</html>
