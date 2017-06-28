@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="jumbotron" style="background-color: #009688;color: #fff;">
+        <div class="row">
+            <div class="col-md-5 col-sm-5 col-xs-5">
+                <h3>{{currentCity.name}}<small style="color:#fff" ng-click="changeCity()">切换</small></h3>
+                <div><img src="{{today.now.cond.code | todayIcon}}" alt="" style="max-width: 70%"></div>
+            </div>
+            <div class="col-md-7 col-sm-7 col-xs-7">
+                <h3>{{today.now.cond.txt}}</h3>
+                <h4>{{today.daily_forecast[0].tmp.min}}～{{today.daily_forecast[0].tmp.max}}&#8451;</h4>
+                <h3>当前气温：{{today.now.tmp}}&#8451;</h3>
+                <h5>{{today.now.wind.dir+' '+today.now.wind.sc}}</h5>
+                <h5>空气质量：{{today.aqi.city.aqi+' '+today.aqi.city.qlty}}</h5>
+
+                <div style="position: relative;top:50px;left: -150px;">
+                    <button ng-click="playWeather(currentCity.name+'，'+today.now.cond.txt+'。当前气温:'+today.now.tmp+'&#8451'+'。'+today.now.wind.dir+' '+today.now.wind.sc+'。空气质量：'+today.aqi.city.qlty)" class="btn btn-default btn-fab"><i style="color: #009688;" class="fa fa-play-circle" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="well well-lg">
+        <table class="table table-striped table-hover ">
+            <tbody>
+            <tr ng-repeat="day in forecasts" style="height: 56px;">
+                <td style="width:35%">{{day.days.substr(6)+' '+day.week}}</td>
+                <td style="width:20%;background: url('img/weatherImg.png') no-repeat {{day.weatid | dayIcon}}"></td>
+                <td style="width:25%">{{day.weather}}</td>
+                <td style="width:30%">{{day.temp_low}}～{{day.temp_high}}&#8451;</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel panel-primary" ng-repeat="sugg in today.suggestion">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{sugg.brf}}</h3>
+        </div>
+        <div class="panel-body">
+            {{sugg.txt}}
+        </div>
+    </div>
+
+</div>

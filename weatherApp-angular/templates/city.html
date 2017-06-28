@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="color: #fff;">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <h4><a href="javascript:void(0)" style="color: #fff" onclick="history.back()">返回</a></h4>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <h4 style="text-align: center">选择城市</h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-3 col-sm-3 col-xs-3" style="text-align: center;padding: 0 5px;" ng-repeat="city in cityData">
+                        <a href="javascript:void(0)" style="width: 100%;padding:5px 0" ng-click="selectCity($index)"
+                           class="btn btn-raised btn-primary">{{city.name}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

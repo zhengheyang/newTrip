@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="color: #fff;">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <h4><a href="javascript:void(0)" style="color: #fff" onclick="history.back()">返回</a></h4>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <h4 style="text-align: center">城市切换</h4>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <button class="btn btn-raised btn-warning">GPS</button>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">最常访问城市</div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3" style="text-align: center;padding: 0 5px;" ng-repeat="city in mostCity">
+                            <a href="javascript:void(0)" ng-click="goHome($index)"  style="width: 100%;padding:5px 0"
+                               class="btn btn-raised btn-primary">{{city.name}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-3" style="text-align: center;padding: 0 5px;" ng-repeat="city in citylist">
+                            <a href="javascript:void(0)" ng-click="selectProvince($index)" style="width: 100%;padding:5px 0"
+                               class="btn btn-raised btn-primary">{{city.province}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{$scope.mostCity|json}}
+
+
