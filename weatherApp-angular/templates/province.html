@@ -13,7 +13,7 @@
         <div class="panel-body">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <button class="btn btn-raised btn-warning">GPS</button>
+                    <button class="btn btn-raised btn-warning" ng-click="getPosition()">GPS</button>
                 </div>
             </div>
 
@@ -21,8 +21,9 @@
                 <div class="panel-body">最常访问城市</div>
                 <div class="panel-footer">
                     <div class="row">
-                        <div class="col-md-3 col-sm-3 col-xs-3" style="text-align: center;padding: 0 5px;" ng-repeat="city in mostCity">
-                            <a href="javascript:void(0)" ng-click="goHome($index)"  style="width: 100%;padding:5px 0"
+                        <div class="col-md-3 col-sm-3 col-xs-3" style="text-align: center;padding: 0 5px;"
+                             ng-repeat="city in mostCity">
+                            <a href="javascript:void(0)" ng-click="goHome($index)" style="width: 100%;padding:5px 0"
                                class="btn btn-raised btn-primary">{{city.name}}</a>
                         </div>
                     </div>
@@ -33,8 +34,10 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3 col-sm-3 col-xs-3" style="text-align: center;padding: 0 5px;" ng-repeat="city in citylist">
-                            <a href="javascript:void(0)" ng-click="selectProvince($index)" style="width: 100%;padding:5px 0"
+                        <div class="col-md-3 col-sm-3 col-xs-3" style="text-align: center;padding: 0 5px;"
+                             ng-repeat="city in citylist">
+                            <a href="javascript:void(0)" ng-click="selectProvince($index)"
+                               style="width: 100%;padding:5px 0"
                                class="btn btn-raised btn-primary">{{city.province}}</a>
                         </div>
                     </div>
@@ -45,6 +48,5 @@
 </div>
 
 
-{{$scope.mostCity|json}}
 
 

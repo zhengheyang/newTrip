@@ -1,7 +1,7 @@
 /**
  * Created by zhyang on 17-6-27.
  */
-angular.module('weatherApp', ['ui.router', 'weatherApp.controller','weatherApp.filter'])
+angular.module('weatherApp', ['ui.router', 'weatherApp.controller', 'weatherApp.filter', 'weatherApp.services'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('home', {
